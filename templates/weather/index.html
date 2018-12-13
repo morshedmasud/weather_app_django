@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'src/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'src/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'src/css/style.css' %}">
+    <title>Bootstrap Starter Pack</title>
+</head>
+
+<body>
+
+<section class="py-4 bg-info">
+    <div class="container">
+        <h2>Find your City weather!!</h2>
+    </div>
+</section>
+
+<section>
+    <div class="container pt-5 ">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group w-75 ">
+                <input type="text" class="form-control" placeholder="City Name">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button">
+                        Add City
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="card mt-3 w-75">
+            <div class="card-body">
+                <div class="d-flex flex-row">
+                    <div class="pr-2">
+                        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                    </div>
+                    <div class="">
+                        <h2 class="">{{ city_weather.city }}</h2>
+                    </div>
+                </div>
+                <div class="info-body">
+                    <small class="mt-0">{{ city_weather.temperature }}° F</small>
+                    <p class="pt-3">{{ city_weather.description }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'src/js/jquery.min.js' %}"></script>
+<script src="{% static 'src/js/popper.min.js' %}"></script>
+<script src="{% static 'src/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
